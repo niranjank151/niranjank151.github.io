@@ -1,6 +1,6 @@
 {
-    "name": "ryvet_indy",
-    "short_name": "ryvet_indy",
+    "name": "indy",
+    "short_name": "indy",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

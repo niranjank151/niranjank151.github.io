@@ -26,21 +26,15 @@ function showAlert(orderId, token, amount, win) {
                             }
                         }
 
-    if (window.Paytm && window.Paytm.CheckoutJS) {
-                     // initialze configuration using init method
-
-                     console.log( window.Paytm);
-                        console.log("");
-                     window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-                         console.log('Before JS Checkout invoke');
-                         // after successfully update configuration invoke checkoutjs
-                         window.Paytm.CheckoutJS.invoke();
-                     }).catch(function onError(error) {
-                         console.log("Error => ", error);
-                     });
-                 }
-}
-
-window.logger = (flutter_value) => {
-   console.log({ js_context: this, flutter_value });
+    if(window.Paytm && window.Paytm.CheckoutJS){
+        window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+            // initialze configuration using init method 
+            window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                // after successfully update configuration invoke checkoutjs
+                window.Paytm.CheckoutJS.invoke();
+            }).catch(function onError(error){
+                console.log("error => ",error);
+            });
+        });
+    } 
 }
